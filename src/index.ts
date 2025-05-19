@@ -1,17 +1,14 @@
 import { log } from "console";
 import express from "express";
+import authRouter from "./routes/auth";
 
 const app = express();
 
+app.use("/auth", authRouter);
+
 const port = process.env.PORT || 8989;
 
-app.get("/", (req, res) => {
-  res.send("<h1>Hello World!</h1>");
-});
-
-app.get("/login", (req, res) => {
-  res.send("<h1>Login Page</h1>");
-});
+app.post("/auth/generate-link", (req, res) => {});
 
 app.listen(port, () => {
   log(`Server is running on port http://localhost:${port}`);
